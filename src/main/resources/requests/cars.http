@@ -6,3 +6,13 @@ GET http://localhost:8080/cars/0e31ba9b-b313-4d93-b7b9-beb133ed0b38
 Accept: application/json
 
 ###
+POST http://localhost:8080/cars
+Content-Type: application/json
+
+{
+  "name": "Ford Focus",
+  "color": "#f00",
+  "mileage": 98342
+}
+
+###

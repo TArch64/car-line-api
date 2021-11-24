@@ -8,7 +8,8 @@ data class CarTaskResponse(
     val id: UUID = UUID.randomUUID(),
     val name: String,
     val repeat: Int?,
-    val status: TaskStatus
+    val status: TaskStatus,
+    val onMileage: Int
 ) {
     companion object {
         fun fromEntity(entity: TaskEntity): CarTaskResponse {
@@ -16,7 +17,8 @@ data class CarTaskResponse(
                 entity.id,
                 entity.name,
                 entity.repeat,
-                entity.status
+                entity.status,
+                entity.onMileage
             )
         }
     }

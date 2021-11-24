@@ -23,6 +23,9 @@ data class TaskEntity(
     @Column(nullable = true)
     val repeat: Int?,
 
+    @Column(nullable = false)
+    val onMileage: Int,
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     val status: TaskStatus,

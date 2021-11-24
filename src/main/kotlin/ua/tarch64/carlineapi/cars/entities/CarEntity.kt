@@ -2,9 +2,13 @@ package ua.tarch64.carlineapi.cars.entities
 
 import org.hibernate.annotations.GenericGenerator
 import ua.tarch64.carlineapi.tasks.entities.TaskEntity
+import ua.tarch64.carlineapi.tasks.enums.TaskStatus
 import ua.tarch64.carlineapi.users.entities.UserEntity
 import java.util.*
 import javax.persistence.*
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
+import javax.validation.constraints.PositiveOrZero
 
 @Entity
 @Table(name = "cars")
@@ -32,9 +36,30 @@ data class CarEntity(
         cascade = [CascadeType.ALL],
         fetch = FetchType.LAZY
     )
-    val tasks: List<TaskEntity>,
+    val tasks: MutableList<TaskEntity> = mutableListOf(),
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     val user: UserEntity
-)
+) {
+    data class CreateOptions(
+        @NotBlank
+        val name: String,
+        @NotBlank
+        val color: String,
+        @NotNull
+        @PositiveOrZero
+        val mileage: Int
+    )
+
+    fun addInitialTask() {
+        val task = TaskEntity(
+            name = "Welcome to the app",
+            status = TaskStatus.DONE,
+            onMileage = mileage,
+            repeat = null,
+            car = this
+        )
+        tasks.add(task)
+    }
+}
