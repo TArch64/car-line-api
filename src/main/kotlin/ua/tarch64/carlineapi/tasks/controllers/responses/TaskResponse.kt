@@ -1,10 +1,10 @@
-package ua.tarch64.carlineapi.cars.controller.responses
+package ua.tarch64.carlineapi.tasks.controllers.responses
 
 import ua.tarch64.carlineapi.tasks.entities.TaskEntity
 import ua.tarch64.carlineapi.tasks.enums.TaskStatus
 import java.util.*
 
-data class CarTaskResponse(
+data class TaskResponse(
     val id: UUID = UUID.randomUUID(),
     val name: String,
     val repeat: Int?,
@@ -12,8 +12,8 @@ data class CarTaskResponse(
     val onMileage: Int
 ) {
     companion object {
-        fun fromEntity(entity: TaskEntity): CarTaskResponse {
-            return CarTaskResponse(
+        fun fromEntity(entity: TaskEntity): TaskResponse {
+            return TaskResponse(
                 entity.id,
                 entity.name,
                 entity.repeat,

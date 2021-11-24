@@ -43,6 +43,13 @@ data class CarEntity(
     @JoinColumn(name = "user_id", nullable = false)
     val user: UserEntity
 ) {
+    constructor(user: UserEntity, options: Options) : this(
+        name = options.name,
+        color = options.color,
+        mileage = options.mileage,
+        user = user
+    )
+
     data class Options(
         @NotBlank
         val name: String,
@@ -62,5 +69,13 @@ data class CarEntity(
             car = this
         )
         tasks.add(task)
+    }
+
+    fun copy(options: Options): CarEntity {
+        return copy(
+            name = options.name,
+            color = options.color,
+            mileage = options.mileage
+        )
     }
 }

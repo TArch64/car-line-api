@@ -1,6 +1,7 @@
 package ua.tarch64.carlineapi.cars.controller.responses
 
 import ua.tarch64.carlineapi.cars.entities.CarEntity
+import ua.tarch64.carlineapi.tasks.controllers.responses.TaskResponse
 import java.util.*
 
 data class CarResponse(
@@ -8,7 +9,7 @@ data class CarResponse(
     val name: String,
     val color: String,
     val mileage: Int,
-    val tasks: List<CarTaskResponse>
+    val tasks: List<TaskResponse>
 ) {
     companion object {
         fun fromEntity(entity: CarEntity): CarResponse {
@@ -17,7 +18,7 @@ data class CarResponse(
                 entity.name,
                 entity.color,
                 entity.mileage,
-                entity.tasks.map(CarTaskResponse::fromEntity)
+                entity.tasks.map(TaskResponse::fromEntity)
             )
         }
     }

@@ -2,6 +2,7 @@ package ua.tarch64.carlineapi.cars.services
 
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import ua.tarch64.carlineapi.cars.entities.CarEntity
 import ua.tarch64.carlineapi.cars.repositories.CarRepository
 import ua.tarch64.carlineapi.users.services.CurrentUserService
@@ -22,26 +23,19 @@ class CarService(
         return repository.findByIdOrNull(carId)
     }
 
+    @Transactional
     fun addCar(options: CarEntity.Options): CarEntity {
-        val car = CarEntity(
-            name = options.name,
-            color = options.color,
-            mileage = options.mileage,
-            user = currentUser
-        )
-        car.addInitialTask()
+        val car = CarEntity(currentUser, options).apply { addInitialTask() }
         return repository.save(car)
     }
 
+    @Transactional
     fun updateCar(carId: UUID, options: CarEntity.Options) {
-        val car = repository.getById(carId).run { copy(
-            name = options.name,
-            color = options.color,
-            mileage = options.mileage
-        ) }
+        val car = repository.getById(carId).copy(options)
         repository.save(car)
     }
 
+    @Transactional
     fun deleteCar(carId: UUID) {
         repository.deleteById(carId)
     }

@@ -5,6 +5,8 @@ import ua.tarch64.carlineapi.cars.entities.CarEntity
 import ua.tarch64.carlineapi.tasks.enums.TaskStatus
 import java.util.*
 import javax.persistence.*
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "tasks")
@@ -34,4 +36,31 @@ data class TaskEntity(
     @ManyToOne
     @JoinColumn(name = "car_id", nullable = false)
     val car: CarEntity
-)
+) {
+    constructor(car: CarEntity, options: Options): this(
+        name = options.name,
+        repeat = options.repeat,
+        onMileage = options.onMileage,
+        status = options.status,
+        car = car
+    )
+
+    data class Options(
+        @NotBlank
+        val name: String,
+        val repeat: Int?,
+        @NotNull
+        val onMileage: Int,
+        @NotNull
+        val status: TaskStatus,
+    )
+
+    fun copy(options: Options): TaskEntity {
+        return copy(
+            name = options.name,
+            status = options.status,
+            onMileage = options.onMileage,
+            repeat = options.repeat
+        )
+    }
+}
