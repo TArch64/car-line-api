@@ -1,6 +1,7 @@
 import java.util.Properties
 import java.io.FileInputStream
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     id("org.springframework.boot") version "2.6.0"
@@ -48,6 +49,10 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
     }
+}
+
+tasks.getByName<BootJar>("bootJar") {
+    archiveFileName.set("${archiveBaseName.get()}.${archiveExtension.get()}")
 }
 
 flyway {
