@@ -26,6 +26,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-undertow:2.6.0")
     implementation("org.springframework.boot:spring-boot-starter-validation:2.6.0")
     developmentOnly("org.springframework.boot:spring-boot-devtools:2.6.0")
+    implementation("org.springframework.boot:spring-boot-starter-security:2.6.0")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.6.0")
     runtimeOnly("org.postgresql:postgresql:42.3.1")
