@@ -24,13 +24,13 @@ class CarService(
     }
 
     @Transactional
-    fun addCar(options: CarEntity.Options): CarEntity {
+    fun addCar(options: CarEntity.CarOptions): CarEntity {
         val car = CarEntity(currentUser, options).apply { addInitialTask() }
         return repository.save(car)
     }
 
     @Transactional
-    fun updateCar(carId: UUID, options: CarEntity.Options) {
+    fun updateCar(carId: UUID, options: CarEntity.CarOptions) {
         val car = repository.getById(carId).copy(options)
         repository.save(car)
     }

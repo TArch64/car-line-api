@@ -17,7 +17,7 @@ class CarController(private val carService: CarService) {
     }
 
     @PostMapping
-    fun addCar(@Validated @RequestBody options: CarEntity.Options): CarResponse {
+    fun addCar(@Validated @RequestBody options: CarEntity.CarOptions): CarResponse {
         return carService.addCar(options).let(CarResponse::fromEntity)
     }
 
@@ -29,7 +29,7 @@ class CarController(private val carService: CarService) {
     @PutMapping("/{carId}")
     fun updateCar(
         @PathVariable carId: UUID,
-        @Validated @RequestBody options: CarEntity.Options
+        @Validated @RequestBody options: CarEntity.CarOptions
     ) {
         carService.updateCar(carId, options)
     }

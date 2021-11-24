@@ -37,7 +37,7 @@ data class TaskEntity(
     @JoinColumn(name = "car_id", nullable = false)
     val car: CarEntity
 ) {
-    constructor(car: CarEntity, options: Options): this(
+    constructor(car: CarEntity, options: TaskOptions): this(
         name = options.name,
         repeat = options.repeat,
         onMileage = options.onMileage,
@@ -45,7 +45,7 @@ data class TaskEntity(
         car = car
     )
 
-    data class Options(
+    data class TaskOptions(
         @NotBlank
         val name: String,
         val repeat: Int?,
@@ -55,7 +55,7 @@ data class TaskEntity(
         val status: TaskStatus,
     )
 
-    fun copy(options: Options): TaskEntity {
+    fun copy(options: TaskOptions): TaskEntity {
         return copy(
             name = options.name,
             status = options.status,

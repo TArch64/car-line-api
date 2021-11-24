@@ -13,7 +13,7 @@ class TaskController(private val taskService: TaskService) {
     @PostMapping("/cars/{carId}/tasks")
     fun addTask(
         @PathVariable carId: UUID,
-        @Validated @RequestBody options: TaskEntity.Options
+        @Validated @RequestBody options: TaskEntity.TaskOptions
     ): TaskResponse {
         return taskService.addTask(carId, options).let(TaskResponse::fromEntity)
     }
@@ -26,7 +26,7 @@ class TaskController(private val taskService: TaskService) {
     @PutMapping("/tasks/{taskId}")
     fun updateTask(
         @PathVariable taskId: UUID,
-        @Validated @RequestBody options: TaskEntity.Options
+        @Validated @RequestBody options: TaskEntity.TaskOptions
     ) {
         taskService.updateTask(taskId, options)
     }

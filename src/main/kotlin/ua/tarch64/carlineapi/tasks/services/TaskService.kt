@@ -13,7 +13,7 @@ class TaskService(
     private val carService: CarService
 ) {
     @Transactional
-    fun addTask(carId: UUID, options: TaskEntity.Options): TaskEntity {
+    fun addTask(carId: UUID, options: TaskEntity.TaskOptions): TaskEntity {
         val task = TaskEntity(carService.getCar(carId)!!, options)
         return repository.save(task)
     }
@@ -24,7 +24,7 @@ class TaskService(
     }
 
     @Transactional
-    fun updateTask(taskId: UUID, options: TaskEntity.Options) {
+    fun updateTask(taskId: UUID, options: TaskEntity.TaskOptions) {
         val task = repository.getById(taskId).copy(options)
         repository.save(task)
     }
