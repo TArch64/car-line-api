@@ -35,6 +35,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0")
+
+    implementation("org.springdoc:springdoc-openapi-ui:1.5.12")
 }
 
 val applicationProperties = Properties().apply {
