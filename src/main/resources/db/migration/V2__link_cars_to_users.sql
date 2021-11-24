@@ -1,0 +1,8 @@
+ALTER TABLE cars
+    ADD user_id UUID;
+
+ALTER TABLE cars
+    ALTER COLUMN user_id SET NOT NULL;
+
+ALTER TABLE cars
+    ADD CONSTRAINT FK_CARS_ON_USER FOREIGN KEY (user_id) REFERENCES users (id);

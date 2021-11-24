@@ -23,7 +23,7 @@ data class TaskEntity(
     @Column(nullable = true)
     val repeat: Int?,
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     val status: TaskStatus,
 

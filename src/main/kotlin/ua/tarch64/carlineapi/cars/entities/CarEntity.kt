@@ -2,6 +2,7 @@ package ua.tarch64.carlineapi.cars.entities
 
 import org.hibernate.annotations.GenericGenerator
 import ua.tarch64.carlineapi.tasks.entities.TaskEntity
+import ua.tarch64.carlineapi.users.entities.UserEntity
 import java.util.*
 import javax.persistence.*
 
@@ -31,5 +32,9 @@ data class CarEntity(
         cascade = [CascadeType.ALL],
         fetch = FetchType.LAZY
     )
-    val tasks: List<TaskEntity>
+    val tasks: List<TaskEntity>,
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    val user: UserEntity
 )

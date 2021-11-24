@@ -40,15 +40,15 @@ val applicationProperties = Properties().apply {
     load(FileInputStream("src/main/resources/application.properties"))
 }
 
-flyway {
-    url = applicationProperties.getProperty("spring.datasource.url")
-    user = applicationProperties.getProperty("spring.datasource.username")
-    password = applicationProperties.getProperty("spring.datasource.password")
-}
-
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
     }
+}
+
+flyway {
+    url = applicationProperties.getProperty("spring.datasource.url")
+    user = applicationProperties.getProperty("spring.datasource.username")
+    password = applicationProperties.getProperty("spring.datasource.password")
 }

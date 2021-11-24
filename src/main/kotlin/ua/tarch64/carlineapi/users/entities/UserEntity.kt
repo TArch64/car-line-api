@@ -1,6 +1,7 @@
 package ua.tarch64.carlineapi.users.entities
 
 import org.hibernate.annotations.GenericGenerator
+import ua.tarch64.carlineapi.cars.entities.CarEntity
 import java.util.*
 import javax.persistence.*
 
@@ -16,5 +17,13 @@ data class UserEntity(
     val id: UUID = UUID.randomUUID(),
 
     @Column(nullable = false)
-    val name: String
+    val name: String,
+
+    @OneToMany(
+        targetEntity = CarEntity::class,
+        mappedBy = "user",
+        cascade = [CascadeType.ALL],
+        fetch = FetchType.LAZY
+    )
+    val cars: List<CarEntity>,
 )

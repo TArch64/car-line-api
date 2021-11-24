@@ -1,0 +1,5 @@
+ALTER TABLE tasks
+    DROP COLUMN status;
+
+ALTER TABLE tasks
+    ADD status VARCHAR(255) NOT NULL;
