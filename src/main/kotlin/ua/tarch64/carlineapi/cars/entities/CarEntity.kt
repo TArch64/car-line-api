@@ -12,6 +12,7 @@ import javax.validation.constraints.PositiveOrZero
 
 @Entity
 @Table(name = "cars")
+@Suppress("DataClassEqualsAndHashCodeInspection")
 data class CarEntity(
     @Id
     @GeneratedValue(generator = "UUID")
@@ -42,7 +43,7 @@ data class CarEntity(
     @JoinColumn(name = "user_id", nullable = false)
     val user: UserEntity
 ) {
-    data class CreateOptions(
+    data class Options(
         @NotBlank
         val name: String,
         @NotBlank

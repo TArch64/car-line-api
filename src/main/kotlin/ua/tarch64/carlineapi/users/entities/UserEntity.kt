@@ -7,6 +7,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "users")
+@Suppress("DataClassEqualsAndHashCodeInspection")
 data class UserEntity(
     @Id
     @GeneratedValue(generator = "UUID")

@@ -22,7 +22,7 @@ class CarService(
         return repository.findByIdOrNull(carId)
     }
 
-    fun addCar(options: CarEntity.CreateOptions): CarEntity {
+    fun addCar(options: CarEntity.Options): CarEntity {
         val car = CarEntity(
             name = options.name,
             color = options.color,
@@ -31,5 +31,18 @@ class CarService(
         )
         car.addInitialTask()
         return repository.save(car)
+    }
+
+    fun updateCar(carId: UUID, options: CarEntity.Options) {
+        val car = repository.getById(carId).run { copy(
+            name = options.name,
+            color = options.color,
+            mileage = options.mileage
+        ) }
+        repository.save(car)
+    }
+
+    fun deleteCar(carId: UUID) {
+        repository.deleteById(carId)
     }
 }

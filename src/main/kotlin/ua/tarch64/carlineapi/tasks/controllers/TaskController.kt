@@ -1,0 +1,12 @@
+package ua.tarch64.carlineapi.tasks.controllers
+
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
+
+@RestController
+@RequestMapping("/tasks")
+class TaskController {
+    @PostMapping
+    fun addTask() {}
+}

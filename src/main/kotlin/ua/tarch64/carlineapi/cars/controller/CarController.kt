@@ -16,13 +16,26 @@ class CarController(private val carService: CarService) {
         return carService.getCars().map(CarsItemResponse::fromEntity)
     }
 
+    @PostMapping
+    fun addCar(@Validated @RequestBody options: CarEntity.Options): CarResponse {
+        return carService.addCar(options).let(CarResponse::fromEntity)
+    }
+
     @GetMapping("/{carId}")
     fun getCar(@PathVariable("carId") carId: UUID): CarResponse? {
         return carService.getCar(carId)?.let(CarResponse::fromEntity)
     }
 
-    @PostMapping
-    fun addCar(@Validated @RequestBody options: CarEntity.CreateOptions): CarResponse {
-        return carService.addCar(options).let(CarResponse::fromEntity)
+    @PutMapping("/{carId}")
+    fun updateCar(
+        @PathVariable("carId") carId: UUID,
+        @Validated @RequestBody options: CarEntity.Options
+    ) {
+        carService.updateCar(carId, options)
+    }
+
+    @DeleteMapping("/{carId}")
+    fun deleteCar(@PathVariable("carId") carId: UUID) {
+        carService.deleteCar(carId)
     }
 }
