@@ -1,0 +1,28 @@
+GET http://localhost:8080/cars/0e31ba9b-b313-4d93-b7b9-beb133ed0b38
+Accept: application/json
+
+<> 2021-11-24T200505.200.json
+
+###
+
+GET http://localhost:8080/cars
+Accept: application/json
+
+<> 2021-11-24T200459.200.json
+
+###
+
+GET http://localhost:8080/cars
+Accept: application/json
+
+<> 2021-11-24T195808.200.json
+
+###
+
+GET http://localhost:8080/cars
+Accept: application/json
+
+<> 2021-11-24T195146.500.json
+
+###
+

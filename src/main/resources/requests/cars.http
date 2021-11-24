@@ -2,3 +2,7 @@ GET http://localhost:8080/cars
 Accept: application/json
 
 ###
+GET http://localhost:8080/cars/0e31ba9b-b313-4d93-b7b9-beb133ed0b38
+Accept: application/json
+
+###
