@@ -3,7 +3,6 @@ package ua.tarch64.carlineapi.cars.controller
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import ua.tarch64.carlineapi.cars.controller.responses.CarResponse
-import ua.tarch64.carlineapi.cars.controller.responses.CarsItemResponse
 import ua.tarch64.carlineapi.cars.entities.CarEntity
 import ua.tarch64.carlineapi.cars.services.CarService
 import java.util.*
@@ -12,8 +11,8 @@ import java.util.*
 @RequestMapping("/cars")
 class CarController(private val carService: CarService) {
     @GetMapping
-    fun getCars(): List<CarsItemResponse> {
-        return carService.getCars().map(CarsItemResponse::fromEntity)
+    fun getCars(): List<CarResponse> {
+        return carService.getCars().map(CarResponse::fromEntity)
     }
 
     @PostMapping
