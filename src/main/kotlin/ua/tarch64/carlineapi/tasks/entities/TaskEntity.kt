@@ -23,8 +23,8 @@ data class TaskEntity(
     @Column(nullable = false, length = 100)
     val name: String,
 
-    @Column(nullable = true)
-    val repeat: Int?,
+    @Column(nullable = true, name = "repeat")
+    val repeatOn: Int?,
 
     @Column(nullable = false)
     val onMileage: Int,
@@ -39,7 +39,7 @@ data class TaskEntity(
 ) {
     constructor(car: CarEntity, options: TaskOptions): this(
         name = options.name,
-        repeat = options.repeat,
+        repeatOn = options.repeat,
         onMileage = options.onMileage,
         status = options.status,
         car = car
@@ -60,7 +60,7 @@ data class TaskEntity(
             name = options.name,
             status = options.status,
             onMileage = options.onMileage,
-            repeat = options.repeat
+            repeatOn = options.repeat
         )
     }
 }

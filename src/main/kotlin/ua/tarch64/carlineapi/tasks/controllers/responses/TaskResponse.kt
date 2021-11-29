@@ -16,7 +16,7 @@ data class TaskResponse(
             return TaskResponse(
                 entity.id,
                 entity.name,
-                entity.repeat,
+                entity.repeatOn,
                 entity.status,
                 entity.onMileage
             )

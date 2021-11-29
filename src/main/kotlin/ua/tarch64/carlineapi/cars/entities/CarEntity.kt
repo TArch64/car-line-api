@@ -65,7 +65,7 @@ data class CarEntity(
             name = "Welcome to the app",
             status = TaskStatus.DONE,
             onMileage = mileage,
-            repeat = null,
+            repeatOn = null,
             car = this
         )
         tasks.add(task)
