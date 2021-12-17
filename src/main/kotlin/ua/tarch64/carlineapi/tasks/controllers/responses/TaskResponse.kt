@@ -7,7 +7,7 @@ import java.util.*
 data class TaskResponse(
     val id: UUID = UUID.randomUUID(),
     val name: String,
-    val repeat: Int?,
+    val repeatOn: Int?,
     val status: TaskStatus,
     val onMileage: Int
 ) {
